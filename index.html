@@ -4,232 +4,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Directional Photo Interaction</title>
-    <meta name="description" content="Interactive profile photo that follows your mouse cursor.">
-
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --text-color: #f8fafc;
-            --accent-color: #38bdf8;
-        }
-
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            overflow: hidden;
-            /* Prevent scrollbars */
-        }
-
-        .container {
-            position: relative;
-            width: 300px;
-            /* Adjust based on actual image size */
-            height: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .photo {
-            width: 100%;
-            height: auto;
-            border-radius: 50%;
-            /* Make it circular if images are square, or just rounded */
-            object-fit: cover;
-            transition: transform 0.1s ease;
-            cursor: pointer;
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-
-        .tooltip {
-            position: absolute;
-            bottom: 20px;
-            /* Position at the bottom */
-            left: 50%;
-            transform: translateX(-50%) scale(0.8);
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            opacity: 0;
-            pointer-events: none;
-            /* Let clicks pass through to the image */
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            white-space: nowrap;
-            backdrop-filter: blur(4px);
-            z-index: 10;
-        }
-
-        /* Show tooltip and scale it up slightly when hovering container */
-        .container:hover .tooltip {
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-        }
-
-        /* Ambient background glow */
-        .glow {
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-    </style>
+    <title>John Mikhail — Staff Software Engineer</title>
+    <meta name="description" content="Portfolio of John Mikhail — Staff Software Engineer. Ex-Google Cloud Pub/Sub, Ex-Mixpanel, MIT. Building Recordio and Diceify.">
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
 
-    <div class="container" id="photoContainer">
-        <div class="glow"></div>
-        <img src="images/center.png" alt="Profile Logic" class="photo" id="profileImage">
-        <div class="tooltip">Click me</div>
+    <!-- ===================== COVER VIDEO ===================== -->
+    <div class="cover-photo">
+        <video class="cover-photo__img" autoplay loop muted playsinline>
+            <source src="assets/cover-video-compressed.mp4" type="video/mp4">
+        </video>
     </div>
 
-    <script>
-        const image = document.getElementById('profileImage');
-        const container = document.getElementById('photoContainer');
+    <!-- ===================== MASTHEAD ===================== -->
+    <header class="masthead container">
+        <h1 class="masthead__name">John Mikhail</h1>
+        <p class="masthead__subtitle">Staff Software Engineer · Builder · Competitor</p>
+    </header>
+    <div class="masthead__rule-wrapper container">
+        <hr class="masthead__rule">
+    </div>
 
-        let isHovering = false;
-        let isClicking = false;
-        let clickCount = 0; // Track number of clicks to alternate
 
-        // Configuration for images
-        const images = {
-            center: 'images/center.png',
-            centerBlush: 'images/centerblush.png',
-            centerTongue: 'images/centertongue.png',
-            up: 'images/up.png',
-            down: 'images/down.png',
-            left: 'images/left.png',
-            right: 'images/right.png',
-            upLeft: 'images/upleft.png',
-            upRight: 'images/upright.png',
-            downLeft: 'images/downleft.png',
-            downRight: 'images/downright.png'
-        };
+    <!-- ===================== HERO ===================== -->
+    <section class="hero container" id="hero">
+        <div class="hero__inner">
+            <p class="hero__tagline">
+                Building products and infrastructure at the intersection of scale and craft.
+            </p>
+            <p class="hero__bio">
+                I've engineered ordered messaging at Google Cloud, rewrote Mixpanel's
+                columnar storage engine, and won robotics competitions at MIT. Now
+                I'm building developer tools and creative software — and available
+                for consulting.
+            </p>
+            <div class="hero__links">
+                <a href="https://www.linkedin.com/in/john-mikhail" target="_blank" rel="noopener" class="hero__link hero__link--primary">
+                    <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://recordio.cc" target="_blank" rel="noopener" class="hero__link">
+                    Recordio ↗
+                </a>
+                <a href="https://diceify.art" target="_blank" rel="noopener" class="hero__link">
+                    Diceify ↗
+                </a>
+            </div>
+        </div>
+    </section>
 
-        // Preload images to prevent flickering
-        Object.values(images).forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
+    <hr class="hr hr--double container">
 
-        // Mouse Move Handler
-        document.addEventListener('mousemove', (e) => {
-            if (isHovering) return; // Logic handled by hover state
+    <!-- ===================== MAIN: EXPERIENCE + PRODUCTS ===================== -->
+    <main class="container">
+        <div class="two-col">
 
-            const rect = image.getBoundingClientRect();
-            // Calculate center of the image
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
+            <!-- --------- LEFT: EXPERIENCE --------- -->
+            <section class="fade-in" id="experience">
+                <span class="section-label">Career</span>
+                <h2 class="section-title">Experience</h2>
 
-            // Calculate angle from center to mouse
-            // Math.atan2 returns angle in radians, -PI to +PI
-            // 0 is right (3 o'clock), positive is clockwise (down), negative is counter-clockwise (up)
-            const dx = e.clientX - centerX;
-            const dy = e.clientY - centerY;
-            let angle = Math.atan2(dy, dx) * (180 / Math.PI);
+                <!-- Mixpanel -->
+                <div class="exp-item">
+                    <div class="exp-item__header">
+                        <h3 class="exp-item__company">Mixpanel</h3>
+                        <span class="exp-item__years">2022 — 2025</span>
+                    </div>
+                    <p class="exp-item__role">Staff Software Engineer</p>
+                    <a href="https://medium.com/mixpaneleng/columnar-db-file-reader-v2-a-complete-rewrite-64acdb62a223" target="_blank" rel="noopener" class="exp-project">
+                        <span class="exp-project__icon">📄</span>
+                        <div class="exp-project__text">
+                            <div class="exp-project__title">Columnar DB File Reader V2</div>
+                            <div class="exp-project__desc">Complete rewrite of the columnar file reader powering Mixpanel's analytics database.</div>
+                        </div>
+                        <span class="exp-project__arrow">→</span>
+                    </a>
+                </div>
 
-            // Normalize angle to 0-360 for easier segmentation
-            // atan2: 0=Right, 90=Down, 180=Left, -90=Up
-            // We want to slice the circle into 8 segments of 45 degrees each.
-            // Let's adjust angle so 0 is Up to make it mentaly easier, or just map standard math angles.
-            // Standard: Right=0, Down=90, Left=180, Up=-90
+                <!-- Google -->
+                <div class="exp-item">
+                    <div class="exp-item__header">
+                        <h3 class="exp-item__company">Google</h3>
+                        <span class="exp-item__years">2018 — 2022</span>
+                    </div>
+                    <p class="exp-item__role">Software Engineer · Cloud Pub/Sub</p>
+                    <a href="https://news.ycombinator.com/item?id=24658132" target="_blank" rel="noopener" class="exp-project">
+                        <span class="exp-project__icon">🔗</span>
+                        <div class="exp-project__text">
+                            <div class="exp-project__title">Ordered Messaging</div>
+                            <div class="exp-project__desc">Primary engineer on ordering keys — guaranteed in-order message delivery at scale.</div>
+                        </div>
+                        <span class="exp-project__arrow">→</span>
+                    </a>
+                </div>
 
-            // Segments:
-            // Right: -22.5 to 22.5
-            // DownRight: 22.5 to 67.5
-            // Down: 67.5 to 112.5
-            // DownLeft: 112.5 to 157.5
-            // Left: 157.5 to 180 AND -180 to -157.5
-            // UpLeft: -157.5 to -112.5
-            // Up: -112.5 to -67.5
-            // UpRight: -67.5 to -22.5
+                <!-- MIT -->
+                <div class="exp-item">
+                    <div class="exp-item__header">
+                        <h3 class="exp-item__company">MIT</h3>
+                        <span class="exp-item__years">2013 — 2017</span>
+                    </div>
+                    <p class="exp-item__role">Massachusetts Institute of Technology</p>
+                </div>
 
-            let direction = 'center';
+            </section>
 
-            if (angle >= -22.5 && angle < 22.5) {
-                direction = 'right';
-            } else if (angle >= 22.5 && angle < 67.5) {
-                direction = 'downRight';
-            } else if (angle >= 67.5 && angle < 112.5) {
-                direction = 'down';
-            } else if (angle >= 112.5 && angle < 157.5) {
-                direction = 'downLeft';
-            } else if (angle >= 157.5 || angle < -157.5) {
-                direction = 'left';
-            } else if (angle >= -157.5 && angle < -112.5) {
-                direction = 'upLeft';
-            } else if (angle >= -112.5 && angle < -67.5) {
-                direction = 'up';
-            } else if (angle >= -67.5 && angle < -22.5) {
-                direction = 'upRight';
-            }
+            <!-- --------- RIGHT: PRODUCTS + CONSULTING --------- -->
+            <section>
 
-            // Update image if changed
-            const newSrc = images[direction];
-            // Only update if src is different and effectively valid (we assume newSrc is correct key)
-            if (newSrc && !image.src.endsWith(newSrc)) {
-                image.src = newSrc;
-            }
-        });
+                <!-- Products -->
+                <div class="fade-in" data-delay="100" id="products">
+                    <span class="section-label">Own Products</span>
+                    <h2 class="section-title">Products</h2>
 
-        // Hover Logic
-        container.addEventListener('mouseenter', () => {
-            isHovering = true;
-            if (!isClicking) {
-                image.src = images.center;
-            }
-        });
+                    <div class="products-grid">
+                        <a href="https://recordio.cc" target="_blank" rel="noopener" class="product-card">
+                            <div class="product-card__header">
+                                <h3 class="product-card__name">Recordio</h3>
+                                <span class="product-card__tag">Chrome Extension</span>
+                            </div>
+                            <p class="product-card__desc">
+                                Professional screen recordings, auto-polished. Record your screen and get
+                                auto-zoom, spotlight, and captions — ready to share in seconds.
+                            </p>
+                            <span class="product-card__url">recordio.cc ↗</span>
+                            <img src="assets/recordio.svg" alt="Recordio" class="product-card__logo">
+                        </a>
 
-        container.addEventListener('mouseleave', () => {
-            isHovering = false;
-            isClicking = false; // Reset click state just in case
-            // Image will update on next mousemove event or we can trigger one manually if needed, 
-            // but usually the user moves the mouse OUT so mousemove fires on document.
-        });
+                        <a href="https://diceify.art" target="_blank" rel="noopener" class="product-card">
+                            <div class="product-card__header">
+                                <h3 class="product-card__name">Diceify</h3>
+                                <span class="product-card__tag">Web App</span>
+                            </div>
+                            <p class="product-card__desc">
+                                Free dice art generator for portraits and mosaics. Upload any photo and
+                                create a mosaic with contrast tuning and a step-by-step builder.
+                            </p>
+                            <span class="product-card__url">diceify.art ↗</span>
+                            <img src="assets/diceify.png" alt="Diceify" class="product-card__logo">
+                        </a>
+                    </div>
+                </div>
 
-        // Click Logic
-        container.addEventListener('mousedown', () => {
-            isClicking = true;
-            // Alternating logic: Even = Tongue, Odd = Blush (since we start at 0, first click makes it 1 -> Tongue? User said First time tongue.
-            // Let's increment first then check.
-            clickCount++;
+                <!-- Consulting -->
+                <div class="fade-in" data-delay="200" id="consulting" style="margin-top: 56px;">
+                    <span class="section-label">Services</span>
+                    <h2 class="section-title">Consulting</h2>
 
-            // "First time you click... center tongue"
-            // Click 1: Tongue
-            // Click 2: Blush
-            // Click 3: Tongue
+                    <div class="consulting-grid">
+                        <div class="consulting-card">
+                            <h3 class="consulting-card__title">Infrastructure & Systems</h3>
+                            <p class="consulting-card__desc">
+                                High-throughput data pipelines, messaging systems, and storage
+                                engines. Experience scaling to billions of events per day.
+                            </p>
+                            <span class="consulting-card__tag">Backend · Distributed Systems</span>
+                        </div>
 
-            if (clickCount % 2 !== 0) {
-                image.src = images.centerTongue;
-            } else {
-                image.src = images.centerBlush;
-            }
-        });
+                        <div class="consulting-card">
+                            <h3 class="consulting-card__title">Product Development</h3>
+                            <p class="consulting-card__desc">
+                                Full-stack product builds from concept to launch. Chrome extensions,
+                                web apps, and developer tools.
+                            </p>
+                            <span class="consulting-card__tag">Product · Engineering</span>
+                        </div>
+                    </div>
+                </div>
 
-        document.addEventListener('mouseup', () => {
-            if (isClicking) {
-                isClicking = false;
-                // If still hovering, go back to center, otherwise correct direction will pick up on move
-                if (isHovering) {
-                    image.src = images.center;
-                }
-            }
-        });
+            </section>
+        </div>
+    </main>
 
-    </script>
+    <hr class="hr container">
+
+    <!-- ===================== AWARDS ===================== -->
+    <section class="container fade-in" id="awards">
+        <span class="section-label">Achievements</span>
+        <h2 class="section-title">Honors & Awards</h2>
+
+        <div class="awards-grid">
+
+            <div class="award-item">
+                <span class="award-item__year">Mar 2024</span>
+                <h4 class="award-item__title">Platform Reliability Award</h4>
+                <p class="award-item__org">Mixpanel</p>
+            </div>
+
+            <div class="award-item">
+                <span class="award-item__year">Oct 2020</span>
+                <h4 class="award-item__title">Feats of Engineering</h4>
+                <p class="award-item__org">Google</p>
+            </div>
+
+            <div class="award-item">
+                <span class="award-item__year">Jan 2017</span>
+                <h4 class="award-item__title">1st Place — BattleCode</h4>
+                <p class="award-item__org">MIT Division</p>
+            </div>
+
+            <div class="award-item">
+                <span class="award-item__year">Oct 2016</span>
+                <h4 class="award-item__title">1st Place — VR Hackathon</h4>
+                <p class="award-item__org">MIT Media Lab · Entertainment</p>
+            </div>
+
+            <div class="award-item">
+                <span class="award-item__year">Jan 2015</span>
+                <h4 class="award-item__title">Audience Choice Award</h4>
+                <p class="award-item__org">iOS Game Dev · MIT</p>
+            </div>
+
+            <div class="award-item">
+                <span class="award-item__year">May 2014</span>
+                <h4 class="award-item__title">1st Place — 2.007</h4>
+                <p class="award-item__org">Design & Manufacturing · MIT</p>
+            </div>
+
+            <div class="award-item">
+                <span class="award-item__year">Jan 2014</span>
+                <h4 class="award-item__title">1st Place — MASLAB</h4>
+                <p class="award-item__org">Mobile Autonomous Systems · MIT</p>
+            </div>
+
+            <div class="award-item">
+                <span class="award-item__year">Jan 2013</span>
+                <h4 class="award-item__title">1st Place — 6.270</h4>
+                <p class="award-item__org">Autonomous Robot Design · MIT</p>
+            </div>
+
+            <div class="award-item">
+                <span class="award-item__year">Nov 2011</span>
+                <h4 class="award-item__title">2nd Place</h4>
+                <p class="award-item__org">World Robotics Olympiad</p>
+            </div>
+
+            <div class="award-item">
+                <span class="award-item__year">Jul 2009</span>
+                <h4 class="award-item__title">Gold Medal</h4>
+                <p class="award-item__org">Egyptian Olympiad of Informatics</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer container">
+        <p class="footer__text">© 2025 John Mikhail</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="index.js"></script>
+
 </body>
 
 </html>
