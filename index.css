@@ -699,8 +699,62 @@ a:hover {
 }
 
 /* ============================================================
+   EXPERIMENTAL PROJECT CARDS
+   ============================================================ */
+.exp-card {
+    padding: 18px 20px;
+    border-radius: var(--radius);
+    border: var(--border);
+    transition: border-color var(--transition);
+    position: relative;
+}
+
+.exp-card:hover {
+    border-color: var(--border-color);
+    border-style: solid;
+}
+
+.exp-card .product-card__header {
+    margin-bottom: 8px;
+}
+
+.exp-card .product-card__name {
+    font-size: 17px;
+}
+
+.exp-card .product-card__desc {
+    margin-bottom: 10px;
+}
+
+.exp-card__brand-icon {
+    position: absolute;
+    bottom: 16px;
+    right: 18px;
+    height: 27px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    opacity: 0.8;
+    pointer-events: none;
+    transition: opacity var(--transition);
+}
+
+.exp-card:hover .exp-card__brand-icon {
+    opacity: 1;
+}
+
+.exp-card__tag-row {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* ============================================================
    CONSULTING
    ============================================================ */
+
 .consulting-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

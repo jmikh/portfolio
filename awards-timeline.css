@@ -30,8 +30,8 @@
 }
 
 .tl-era__photo-wrap {
-    width: 180px;
-    height: 220px;
+    width: 210px;
+    height: 260px;
     overflow: hidden;
     border-radius: var(--radius);
     margin-bottom: 14px;
@@ -53,7 +53,7 @@
 
 .tl-era__label-wrap {
     text-align: right;
-    width: 180px;
+    width: 210px;
 }
 
 .tl-era__label {
@@ -225,7 +225,7 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 860px) {
+@media (max-width: 960px) {
     .tl-era {
         grid-template-columns: 1fr;
         gap: 0;
@@ -242,8 +242,8 @@
     }
 
     .tl-era__photo-wrap {
-        width: 64px;
-        height: 80px;
+        width: 100px;
+        height: 120px;
         margin-bottom: 0;
         flex-shrink: 0;
     }
