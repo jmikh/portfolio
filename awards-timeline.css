@@ -188,7 +188,7 @@
 .tl-entry__org {
     font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--text-muted);
+    color: var(--text-primary);
     line-height: 1.4;
 }
 
