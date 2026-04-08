@@ -873,6 +873,20 @@ a:hover {
         height: 160px;
     }
 
+    .sections-grid {
+        border: none;
+        border-radius: 0;
+    }
+
+    .section-box {
+        padding: 24px 0;
+    }
+
+    .section-box::after {
+        left: 0;
+        right: 0;
+    }
+
     .awards-grid {
         grid-template-columns: 1fr;
     }
