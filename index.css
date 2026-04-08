@@ -96,8 +96,9 @@ a:hover {
 /* --- Dividers --- */
 .hr {
     border: none;
-    border-top: var(--border);
-    margin: var(--gap-section) 0;
+    border-top: var(--border-strong);
+    margin: var(--gap-section) auto;
+    width: 60%;
 }
 
 .hr--solid {
@@ -108,16 +109,10 @@ a:hover {
     border-top: var(--border-double);
 }
 
-/* --- Fade In --- */
+/* --- Fade In (disabled — all sections visible immediately) --- */
 .fade-in {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.fade-in.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
 
 /* ============================================================
@@ -126,15 +121,16 @@ a:hover {
 .cover-photo {
     padding: 0 0 24px;
     width: 100%;
+    overflow: hidden;
 }
 
 .cover-photo__img {
     display: block;
     width: 100%;
     max-height: 624px;
+    min-height: 280px;
     object-fit: cover;
     object-position: center 33%;
-
 }
 
 /* ============================================================
@@ -145,6 +141,59 @@ a:hover {
     text-align: center;
 }
 
+.masthead__name-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.masthead__linkedin {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-primary);
+    text-decoration: none;
+    opacity: 0.5;
+    transition: opacity var(--transition);
+    position: relative;
+    /* size relative to the name — scales with clamp */
+    width: clamp(28px, 3.5vw, 46px);
+    height: clamp(28px, 3.5vw, 46px);
+}
+
+.masthead__linkedin:hover {
+    opacity: 1;
+}
+
+.masthead__linkedin svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 200ms ease;
+}
+
+.masthead__linkedin .li-outline {
+    opacity: 1;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 0.75;
+}
+
+.masthead__linkedin .li-filled {
+    fill: currentColor;
+    opacity: 0;
+}
+
+.masthead__linkedin:hover .li-outline {
+    opacity: 0;
+}
+
+.masthead__linkedin:hover .li-filled {
+    opacity: 1;
+}
+
 .masthead__name {
     font-family: var(--font-mono);
     font-size: clamp(52px, 7vw, 84px);
@@ -152,16 +201,15 @@ a:hover {
     letter-spacing: -1.5px;
     line-height: 1;
     color: var(--text-primary);
-    margin-bottom: 12px;
 }
 
-.masthead__subtitle {
+.masthead__tagline {
     font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--text-muted);
+    font-size: clamp(20px, 3vw, 40px);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    color: var(--text-secondary);
 }
 
 .masthead__rule-wrapper {
@@ -185,6 +233,21 @@ a:hover {
 
 .hero__inner {
     max-width: 680px;
+}
+
+.hero__inner--centered {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Hero Rule */
+.hero__rule {
+    border: none;
+    border-top: var(--border-strong);
+    width: 60%;
+    margin: 0 auto 28px;
 }
 
 /* Photo Widget */
@@ -250,32 +313,22 @@ a:hover {
 }
 
 /* Hero Bio */
-.hero__bio-area {
-    padding-top: 4px;
-}
-
-.hero__tagline {
-    font-family: var(--font-mono);
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 1.45;
-    color: var(--text-primary);
-    margin-bottom: 18px;
-}
-
 .hero__bio {
     font-family: var(--font-mono);
     font-size: 13px;
-    line-height: 1.8;
+    line-height: 1.85;
     color: var(--text-secondary);
-    margin-bottom: 28px;
-    max-width: 500px;
+    margin-bottom: 22px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero__links {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .hero__link {
@@ -321,21 +374,134 @@ a:hover {
 }
 
 /* ============================================================
-   TWO-COLUMN
+   SECTIONS GRID
    ============================================================ */
-.two-col {
+.sections-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "career     education"
+        "products   experimental"
+        "consulting consulting";
     gap: 0;
+    background: transparent;
+    border: var(--border);
+    border-radius: var(--radius);
 }
 
-.two-col> :first-child {
-    border-right: var(--border);
-    padding-right: 48px;
+.section-box {
+    background: var(--bg);
+    padding: 36px 40px;
+    position: relative;
 }
 
-.two-col> :last-child {
-    padding-left: 48px;
+/* Inset inner dividers — don't touch outer border */
+.section-box--career::before,
+.section-box--career::after,
+.section-box--education::after,
+.section-box--products::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+}
+
+/* Career: right vertical divider */
+.section-box--career::after {
+    right: 0;
+    top: 20px;
+    bottom: 20px;
+    width: 0;
+    border-right: 1px dashed var(--border-color);
+}
+
+/* Career: bottom horizontal divider */
+.section-box--career::before {
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+/* Education: bottom horizontal divider */
+.section-box--education::after {
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+/* Products: right vertical divider */
+.section-box--products::after {
+    right: 0;
+    top: 20px;
+    bottom: 20px;
+    width: 0;
+    border-right: 1px dashed var(--border-color);
+}
+
+.section-box--career {
+    grid-area: career;
+}
+
+.section-box--education {
+    grid-area: education;
+}
+
+.section-box--products {
+    grid-area: products;
+}
+
+.section-box--experimental {
+    grid-area: experimental;
+}
+
+.section-box--consulting {
+    grid-area: consulting;
+}
+
+.section-box__hd {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: var(--border-light);
+}
+
+.section-box__hd-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.section-box__hd-text .section-title {
+    margin-bottom: 0;
+}
+
+.section-box__placeholder {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
+.section-box__corner-img {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 6px;
+    opacity: 0.72;
+    filter: grayscale(0.15) contrast(1.05);
+    flex-shrink: 0;
+}
+
+.section-box--products .section-box__corner-img {
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
 }
 
 /* ============================================================
@@ -367,6 +533,17 @@ a:hover {
     font-weight: 800;
     color: var(--text-primary);
     line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.exp-item__company-icon {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 4px;
 }
 
 .exp-item__years {
@@ -382,6 +559,26 @@ a:hover {
     color: var(--text-secondary);
     margin-bottom: 14px;
     font-style: italic;
+}
+
+.mit-edu-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mit-edu-block__img {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border-radius: 6px;
+    opacity: 0.8;
+    filter: grayscale(0.15) contrast(1.05);
+    flex-shrink: 0;
+}
+
+.mit-edu-block .exp-item__role {
+    margin-bottom: 0;
 }
 
 .exp-project {
@@ -401,10 +598,14 @@ a:hover {
     border-style: solid;
 }
 
-.exp-project__icon {
-    font-size: 13px;
+.exp-project__brand-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
     flex-shrink: 0;
-    margin-top: 1px;
+    border-radius: 3px;
+    margin-top: 2px;
+    opacity: 0.85;
 }
 
 .exp-project__text {
@@ -529,9 +730,9 @@ a:hover {
    CONSULTING
    ============================================================ */
 .consulting-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
 
 .consulting-card {
@@ -659,20 +860,18 @@ a:hover {
         height: 200px;
     }
 
-    .two-col {
+    .sections-grid {
         grid-template-columns: 1fr;
+        grid-template-areas:
+            "career"
+            "education"
+            "products"
+            "experimental"
+            "consulting";
     }
 
-    .two-col> :first-child {
-        border-right: none;
-        padding-right: 0;
-        padding-bottom: 48px;
-        border-bottom: var(--border);
-        margin-bottom: 48px;
-    }
-
-    .two-col> :last-child {
-        padding-left: 0;
+    .section-box {
+        padding: 28px 24px;
     }
 
     .awards-grid {
