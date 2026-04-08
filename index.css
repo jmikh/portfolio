@@ -350,16 +350,29 @@ a:hover {
    SECTIONS GRID
    ============================================================ */
 .sections-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "career     education"
-        "products   experimental"
-        "consulting consulting";
-    gap: 0;
+    display: flex;
     background: transparent;
     border: var(--border);
     border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.sections-col {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+}
+
+.sections-col--left::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20px;
+    bottom: 20px;
+    width: 0;
+    border-right: 1px dashed var(--border-color);
 }
 
 .section-box {
@@ -369,69 +382,21 @@ a:hover {
 }
 
 /* Inset inner dividers — don't touch outer border */
-.section-box--career::before,
-.section-box--career::after,
-.section-box--education::after,
-.section-box--products::after {
+.section-box::after {
     content: '';
     position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 0;
+    border-bottom: 1px dashed var(--border-color);
     pointer-events: none;
+    opacity: 0;
 }
 
-/* Career: right vertical divider */
-.section-box--career::after {
-    right: 0;
-    top: 20px;
-    bottom: 20px;
-    width: 0;
-    border-right: 1px dashed var(--border-color);
-}
-
-/* Career: bottom horizontal divider */
-.section-box--career::before {
-    bottom: 0;
-    left: 20px;
-    right: 20px;
-    height: 0;
-    border-bottom: 1px dashed var(--border-color);
-}
-
-/* Education: bottom horizontal divider */
-.section-box--education::after {
-    bottom: 0;
-    left: 20px;
-    right: 20px;
-    height: 0;
-    border-bottom: 1px dashed var(--border-color);
-}
-
-/* Products: right vertical divider */
+.section-box--education::after,
 .section-box--products::after {
-    right: 0;
-    top: 20px;
-    bottom: 20px;
-    width: 0;
-    border-right: 1px dashed var(--border-color);
-}
-
-.section-box--career {
-    grid-area: career;
-}
-
-.section-box--education {
-    grid-area: education;
-}
-
-.section-box--products {
-    grid-area: products;
-}
-
-.section-box--experimental {
-    grid-area: experimental;
-}
-
-.section-box--consulting {
-    grid-area: consulting;
+    opacity: 1;
 }
 
 .section-box__hd {
@@ -750,51 +715,6 @@ a:hover {
 }
 
 /* ============================================================
-   CONSULTING
-   ============================================================ */
-
-.consulting-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.consulting-card {
-    padding: 18px 20px;
-    border-radius: var(--radius);
-    border: var(--border-light);
-    transition: all var(--transition);
-}
-
-.consulting-card:hover {
-    border-color: var(--border-color);
-}
-
-.consulting-card__title {
-    font-family: var(--font-mono);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 7px;
-}
-
-.consulting-card__desc {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 10px;
-}
-
-.consulting-card__tag {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-
-/* ============================================================
    AWARDS — grid of bordered cells
    ============================================================ */
 .awards-grid {
@@ -915,13 +835,15 @@ a:hover {
     }
 
     .sections-grid {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "career"
-            "education"
-            "products"
-            "experimental"
-            "consulting";
+        flex-direction: column;
+    }
+
+    .sections-col--left::after {
+        display: none;
+    }
+
+    .section-box--career::after {
+        opacity: 1;
     }
 
     .section-box {
