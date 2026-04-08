@@ -9,6 +9,7 @@
         content="Portfolio of John Mikhail — AI Consultant & Freelance Product Builder. MIT grad, ex-Google, ex-Mixpanel Staff Engineer. Building AI agents, chatbots, and full-stack products.">
     <link rel="icon" type="image/png" href="assets/icon.png">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="awards-timeline.css">
 </head>
 
 <body>
@@ -26,16 +27,7 @@
             <h1 class="masthead__name">John Mikhail</h1>
             <a href="https://www.linkedin.com/in/john-mikhail" target="_blank" rel="noopener" class="masthead__linkedin"
                 aria-label="LinkedIn">
-                <!-- outline (same geometry as filled, rendered with stroke only) -->
-                <svg class="li-outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path
-                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-                <!-- filled -->
-                <svg class="li-filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path
-                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
+                <img src="assets/linkedin.svg" alt="LinkedIn" class="masthead__linkedin-icon">
             </a>
         </div>
         <p class="masthead__tagline">AI Consultant &amp; Freelance Product Builder</p>
@@ -73,7 +65,10 @@
                 <!-- Mixpanel -->
                 <div class="exp-item">
                     <div class="exp-item__header">
-                        <h3 class="exp-item__company">Mixpanel</h3>
+                        <h3 class="exp-item__company">
+                            <img src="assets/mixpanel.webp" alt="Mixpanel" class="exp-item__company-icon">
+                            Mixpanel
+                        </h3>
                         <span class="exp-item__years">2022 — 2025</span>
                     </div>
                     <p class="exp-item__role">Staff Software Engineer</p>
@@ -87,13 +82,23 @@
                         </div>
                         <span class="exp-project__arrow">→</span>
                     </a>
+                    <a href="https://medium.com/mixpaneleng/database-file-format-optimization-per-column-dictionary-2e108df1d706"
+                        target="_blank" rel="noopener" class="exp-project">
+                        <img src="assets/medium-logo.webp" alt="Medium" class="exp-project__brand-icon">
+                        <div class="exp-project__text">
+                            <div class="exp-project__title">Per-Column Dictionary Encoding</div>
+                            <div class="exp-project__desc">Database file format optimization reducing storage and
+                                improving query performance.</div>
+                        </div>
+                        <span class="exp-project__arrow">→</span>
+                    </a>
                 </div>
 
                 <!-- Google -->
                 <div class="exp-item">
                     <div class="exp-item__header">
                         <h3 class="exp-item__company">
-                            <img src="assets/google-icon.png" alt="Google" class="exp-item__company-icon">
+                            <img src="assets/google-icon.webp" alt="Google" class="exp-item__company-icon">
                             Google
                         </h3>
                         <span class="exp-item__years">2018 — 2022</span>
@@ -125,7 +130,7 @@
                 <div class="exp-item">
                     <div class="exp-item__header">
                         <h3 class="exp-item__company">
-                            <img src="assets/mit.png" alt="MIT" class="exp-item__company-icon">
+                            <img src="assets/mit.webp" alt="MIT" class="exp-item__company-icon">
                             MIT
                         </h3>
                         <span class="exp-item__years">2013 — 2017</span>
@@ -168,7 +173,7 @@
                             create a mosaic with contrast tuning and a step-by-step builder.
                         </p>
                         <span class="product-card__url">diceify.art ↗</span>
-                        <img src="assets/diceify.png" alt="Diceify" class="product-card__logo">
+                        <img src="assets/diceify.webp" alt="Diceify" class="product-card__logo">
                     </a>
                 </div>
             </section>
@@ -214,77 +219,197 @@
         </div>
     </main>
 
-
     <hr class="hr container">
 
-    <!-- ===================== AWARDS ===================== -->
+    <!-- ===================== AWARDS TIMELINE ===================== -->
     <section class="container fade-in" id="awards">
         <span class="section-label">Achievements</span>
-        <h2 class="section-title">Honors & Awards</h2>
+        <h2 class="section-title">Awards</h2>
 
-        <div class="awards-grid">
+        <div class="timeline-a">
 
-            <div class="award-item">
-                <span class="award-item__year">Mar 2024</span>
-                <h4 class="award-item__title">Platform Reliability Award</h4>
-                <p class="award-item__org">Mixpanel</p>
+            <!-- ════════════════════════ WORK ════════════════════════ -->
+            <div class="tl-era">
+                <div class="tl-era__sidebar">
+                    <div class="tl-era__photo-wrap">
+                        <img src="assets/me-work.webp" alt="John at work" class="tl-era__photo">
+                    </div>
+                    <div class="tl-era__label-wrap">
+                        <span class="tl-era__label">Work</span>
+                        <span class="tl-era__years">2018 — present</span>
+                    </div>
+                </div>
+
+                <div class="tl-era__entries">
+                    <div class="tl-entry">
+                        <div class="tl-entry__dot"></div>
+                        <div class="tl-entry__card">
+                            <span class="tl-entry__year">2024</span>
+                            <h4 class="tl-entry__title">Platform Reliability Award</h4>
+                            <p class="tl-entry__org">Mixpanel</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-entry">
+                        <div class="tl-entry__dot"></div>
+                        <div class="tl-entry__card">
+                            <span class="tl-entry__year">2020</span>
+                            <h4 class="tl-entry__title">Feats of Engineering</h4>
+                            <p class="tl-entry__org">Google</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="award-item">
-                <span class="award-item__year">Oct 2020</span>
-                <h4 class="award-item__title">Feats of Engineering</h4>
-                <p class="award-item__org">Google</p>
+            <div class="tl-era-divider"><hr class="tl-era-divider__rule"></div>
+
+            <!-- ════════════════════════ UNIVERSITY ════════════════════════ -->
+            <div class="tl-era">
+                <div class="tl-era__sidebar">
+                    <div class="tl-era__photo-wrap">
+                        <img src="assets/me-college.webp" alt="John at MIT" class="tl-era__photo">
+                    </div>
+                    <div class="tl-era__label-wrap">
+                        <span class="tl-era__label">University</span>
+                        <span class="tl-era__years">MIT · 2013 — 2017</span>
+                    </div>
+                </div>
+
+                <div class="tl-era__entries">
+                    <div class="tl-entry">
+                        <div class="tl-entry__dot"></div>
+                        <div class="tl-entry__card">
+                            <span class="tl-entry__year">2017</span>
+                            <h4 class="tl-entry__title">1st Place — BattleCode</h4>
+                            <p class="tl-entry__org">MIT Division</p>
+                            <a href="https://youtu.be/AHreDyZ76gk" target="_blank" rel="noopener"
+                                class="tl-entry__media" aria-label="Watch on YouTube">
+                                <img src="assets/youtube.svg" alt="YouTube" class="tl-entry__media-icon">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="tl-entry">
+                        <div class="tl-entry__dot"></div>
+                        <div class="tl-entry__card">
+                            <span class="tl-entry__year">2016</span>
+                            <h4 class="tl-entry__title">1st Place — VR Hackathon</h4>
+                            <p class="tl-entry__org">MIT Media Lab · Entertainment</p>
+                            <a href="https://www.youtube.com/watch?v=jxx5QjsNJMk" target="_blank" rel="noopener"
+                                class="tl-entry__media" aria-label="Watch on YouTube">
+                                <img src="assets/youtube.svg" alt="YouTube" class="tl-entry__media-icon">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="tl-entry">
+                        <div class="tl-entry__dot"></div>
+                        <div class="tl-entry__card">
+                            <span class="tl-entry__year">2015</span>
+                            <h4 class="tl-entry__title">Audience Choice Award</h4>
+                            <p class="tl-entry__org">iOS Game Dev · MIT</p>
+                            <a href="https://www.youtube.com/watch?v=gylS0syWTX8" target="_blank" rel="noopener"
+                                class="tl-entry__media" aria-label="Watch on YouTube">
+                                <img src="assets/youtube.svg" alt="YouTube" class="tl-entry__media-icon">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="tl-entry">
+                        <div class="tl-entry__dot"></div>
+                        <div class="tl-entry__card">
+                            <span class="tl-entry__year">2014</span>
+                            <h4 class="tl-entry__title">1st Place — 2.007</h4>
+                            <p class="tl-entry__org">Design &amp; Manufacturing · MIT</p>
+                        </div>
+                    </div>
+
+                    <div class="tl-entry">
+                        <div class="tl-entry__dot"></div>
+                        <div class="tl-entry__card">
+                            <span class="tl-entry__year">2014</span>
+                            <h4 class="tl-entry__title">1st Place — MASLAB</h4>
+                            <p class="tl-entry__org">Mobile Autonomous Systems · MIT</p>
+                            <a href="https://www.youtube.com/watch?v=hvfOQZSPVkY" target="_blank" rel="noopener"
+                                class="tl-entry__media" aria-label="Watch on YouTube">
+                                <img src="assets/youtube.svg" alt="YouTube" class="tl-entry__media-icon">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="tl-entry">
+                        <div class="tl-entry__dot"></div>
+                        <div class="tl-entry__card">
+                            <span class="tl-entry__year">2013</span>
+                            <h4 class="tl-entry__title">1st Place — 6.270</h4>
+                            <p class="tl-entry__org">Autonomous Robot Design · MIT</p>
+                            <a href="https://thetech.com/2013/02/05/6x70-v133-n1" target="_blank" rel="noopener"
+                                class="tl-entry__media" aria-label="Read in The Tech">
+                                <img src="assets/tech.webp" alt="The Tech"
+                                    class="tl-entry__media-icon tl-entry__media-icon--rounded">
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="award-item">
-                <span class="award-item__year">Jan 2017</span>
-                <h4 class="award-item__title">1st Place — BattleCode</h4>
-                <p class="award-item__org">MIT Division</p>
+            <div class="tl-era-divider"><hr class="tl-era-divider__rule"></div>
+
+            <!-- ════════════════════════ HIGH SCHOOL ════════════════════════ -->
+            <div class="tl-era">
+                <div class="tl-era__sidebar">
+                    <div class="tl-era__photo-wrap">
+                        <img src="assets/me-highschool.webp" alt="John in high school" class="tl-era__photo">
+                    </div>
+                    <div class="tl-era__label-wrap">
+                        <span class="tl-era__label">High School</span>
+                        <span class="tl-era__years">2009 — 2013</span>
+                    </div>
+                </div>
+
+                <div class="tl-era__entries">
+                    <div class="tl-entry">
+                        <div class="tl-entry__dot"></div>
+                        <div class="tl-entry__card">
+                            <span class="tl-entry__year">2011</span>
+                            <h4 class="tl-entry__title">2nd Place</h4>
+                            <p class="tl-entry__org">World Robotics Olympiad</p>
+                            <a href="https://www.youtube.com/watch?v=9G2wLtddYMs" target="_blank" rel="noopener"
+                                class="tl-entry__media" aria-label="Watch on YouTube">
+                                <img src="assets/youtube.svg" alt="YouTube" class="tl-entry__media-icon">
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="award-item">
-                <span class="award-item__year">Oct 2016</span>
-                <h4 class="award-item__title">1st Place — VR Hackathon</h4>
-                <p class="award-item__org">MIT Media Lab · Entertainment</p>
+            <div class="tl-era-divider"><hr class="tl-era-divider__rule"></div>
+
+            <!-- ════════════════════════ MIDDLE SCHOOL ════════════════════════ -->
+            <div class="tl-era">
+                <div class="tl-era__sidebar">
+                    <div class="tl-era__photo-wrap">
+                        <img src="assets/me-middleschool.webp" alt="John in middle school" class="tl-era__photo">
+                    </div>
+                    <div class="tl-era__label-wrap">
+                        <span class="tl-era__label">Middle School</span>
+                        <span class="tl-era__years">~2009</span>
+                    </div>
+                </div>
+
+                <div class="tl-era__entries">
+                    <div class="tl-entry">
+                        <div class="tl-entry__dot"></div>
+                        <div class="tl-entry__card">
+                            <span class="tl-entry__year">2009</span>
+                            <h4 class="tl-entry__title">Gold Medal</h4>
+                            <p class="tl-entry__org">Egyptian Olympiad of Informatics</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="award-item">
-                <span class="award-item__year">Jan 2015</span>
-                <h4 class="award-item__title">Audience Choice Award</h4>
-                <p class="award-item__org">iOS Game Dev · MIT</p>
-            </div>
-
-            <div class="award-item">
-                <span class="award-item__year">May 2014</span>
-                <h4 class="award-item__title">1st Place — 2.007</h4>
-                <p class="award-item__org">Design & Manufacturing · MIT</p>
-            </div>
-
-            <div class="award-item">
-                <span class="award-item__year">Jan 2014</span>
-                <h4 class="award-item__title">1st Place — MASLAB</h4>
-                <p class="award-item__org">Mobile Autonomous Systems · MIT</p>
-            </div>
-
-            <div class="award-item">
-                <span class="award-item__year">Jan 2013</span>
-                <h4 class="award-item__title">1st Place — 6.270</h4>
-                <p class="award-item__org">Autonomous Robot Design · MIT</p>
-            </div>
-
-            <div class="award-item">
-                <span class="award-item__year">Nov 2011</span>
-                <h4 class="award-item__title">2nd Place</h4>
-                <p class="award-item__org">World Robotics Olympiad</p>
-            </div>
-
-            <div class="award-item">
-                <span class="award-item__year">Jul 2009</span>
-                <h4 class="award-item__title">Gold Medal</h4>
-                <p class="award-item__org">Egyptian Olympiad of Informatics</p>
-            </div>
-
-        </div>
+        </div><!-- /.timeline-a -->
     </section>
 
     <!-- ===================== FOOTER ===================== -->

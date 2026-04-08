@@ -1,0 +1,276 @@
+/* ============================================================
+   AWARDS TIMELINE — Sectioned with era photos
+   ============================================================ */
+
+/* ── Timeline wrapper ── */
+.timeline-a {
+    position: relative;
+    padding-left: 0;
+}
+
+/* ── Era group ── */
+.tl-era {
+    position: relative;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 0 48px;
+    margin-bottom: 0;
+}
+
+/* ── Era sidebar: portrait + label ── */
+.tl-era__sidebar {
+    position: sticky;
+    top: 32px;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 0;
+    padding-top: 4px;
+}
+
+.tl-era__photo-wrap {
+    width: 180px;
+    height: 220px;
+    overflow: hidden;
+    border-radius: var(--radius);
+    margin-bottom: 14px;
+    position: relative;
+}
+
+.tl-era__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(0.08) contrast(1.05);
+    transition: filter 0.3s ease;
+}
+
+.tl-era__photo-wrap:hover .tl-era__photo {
+    filter: grayscale(0) contrast(1.02);
+}
+
+.tl-era__label-wrap {
+    text-align: right;
+    width: 180px;
+}
+
+.tl-era__label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: block;
+}
+
+.tl-era__years {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    opacity: 0.6;
+    margin-top: 3px;
+    display: block;
+}
+
+/* ── Era entries column ── */
+.tl-era__entries {
+    position: relative;
+    padding-left: 28px;
+    padding-bottom: 40px;
+}
+
+/* Vertical dashed spine */
+.tl-era__entries::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 0;
+    border-left: 1px dashed var(--border-color);
+}
+
+/* Faded connector to next era */
+.tl-era:not(:last-child) .tl-era__entries::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    border-left: 1px dashed rgba(26, 26, 22, 0.2);
+}
+
+/* ── Era divider between sections ── */
+.tl-era-divider {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 0 48px;
+    margin-bottom: 32px;
+}
+
+.tl-era-divider__rule {
+    grid-column: 2;
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 0;
+    opacity: 0.35;
+}
+
+/* ── Single entry ── */
+.tl-entry {
+    position: relative;
+    padding: 0 0 28px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.tl-entry:last-child {
+    padding-bottom: 0;
+}
+
+/* Dot on the spine */
+.tl-entry__dot {
+    position: absolute;
+    left: -34px;
+    top: 7px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background: var(--bg);
+    flex-shrink: 0;
+    transition: background var(--transition);
+    z-index: 1;
+}
+
+.tl-entry:hover .tl-entry__dot {
+    background: var(--text-primary);
+}
+
+/* Entry card */
+.tl-entry__card {
+    flex: 1;
+    padding: 16px 18px;
+    border: var(--border);
+    border-radius: var(--radius);
+    transition: background var(--transition), border-color var(--transition);
+    position: relative;
+}
+
+.tl-entry:hover .tl-entry__card {
+    background: rgba(26, 26, 22, 0.04);
+    border-color: var(--border-color);
+    border-style: solid;
+}
+
+.tl-entry__year {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.tl-entry__title {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 3px;
+}
+
+.tl-entry__org {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Media link (YouTube, newspaper, etc.) */
+.tl-entry__media {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    opacity: 0.35;
+    transition: opacity var(--transition);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.tl-entry__media:hover {
+    opacity: 1;
+}
+
+.tl-entry__media-icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    object-fit: contain;
+}
+
+.tl-entry__media-icon--rounded {
+    border-radius: 4px;
+    object-fit: cover;
+    border: 1.5px solid var(--border-color);
+    width: 17px;
+    height: 17px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+    .tl-era {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .tl-era__sidebar {
+        position: static;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: var(--border-light);
+    }
+
+    .tl-era__photo-wrap {
+        width: 64px;
+        height: 80px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .tl-era__label-wrap {
+        text-align: left;
+        width: auto;
+    }
+
+    .tl-era-divider {
+        grid-template-columns: 1fr;
+    }
+
+    .tl-era-divider__rule {
+        grid-column: 1;
+        margin-bottom: 24px;
+    }
+}
+
+@media (max-width: 520px) {
+    .tl-era__entries {
+        padding-left: 20px;
+    }
+
+    .tl-entry__dot {
+        left: -26px;
+        width: 10px;
+        height: 10px;
+    }
+}
